@@ -6,7 +6,20 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const Listing = require('./models/listings.js')
 const ExpressError = require('./utils/ExpressError.js')
+const listingSchema = require('./schema.js')
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
+const validateListing = (req, res, next) => {
+    let {error} = listingSchema.validate(req.body, {abortEarly: false});
+    if(error){
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    }
+    else {
+        next();
+    }
+};
+
 
 main()
 .then(() => {
@@ -57,18 +70,16 @@ app.get("/listings/:id/edit", async(req, res) => {
 });
 
 // Update Route
-app.put("/listings/:id", async(req,res) => {
+app.put("/listings/:id", validateListing, async(req,res) => {
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
     res.redirect("/listings");
 });
 
 // Create Route
-app.post("/listings", async (req,res) => {
+app.post("/listings", validateListing, async (req,res) => {
     let {title, description, image, price, location, country} = req.body;
-    if(!title || !description || !image.url || !price || !location || !country) {
-        throw new ExpressError(400, "Send Valid Data");
-    }
+
     const imageObject = {
     url: image.url,
     filename: 'listing_image' 
