@@ -111,7 +111,7 @@ app.post("/listings/:id/reviews", async(req, res) => {
     let {reviews} = req.body;
     let newReview = new Review(reviews);
 
-    Listing.reviews.push(newReview);
+    listing.reviews.push(newReview);
 
     await newReview.save();
     await listing.save();
