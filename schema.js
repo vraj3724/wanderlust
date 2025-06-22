@@ -23,5 +23,4 @@ module.exports = {
   listingSchema,
   reviewSchema
 };
->>>>>>> Stashed changes
->>>>>>> bug-fix
+
