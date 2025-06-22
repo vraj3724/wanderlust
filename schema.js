@@ -11,21 +11,13 @@ const listingSchema = Joi.object({
         }).required(),
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-module.exports = listingSchema;
-=======
->>>>>>> bug-fix
+
 const reviewSchema = Joi.object({
     comment: Joi.string().required(),
     rating: Joi.number().min(1).max(5).required(),
 });
 
-<<<<<<< HEAD
-module.exports = reviewSchema;
-module.exports = listingSchema;
-=======
+
 
 module.exports = {
   listingSchema,
