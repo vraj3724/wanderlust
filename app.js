@@ -6,16 +6,23 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const Listing = require('./models/listings.js')
 const ExpressError = require('./utils/ExpressError.js')
-<<<<<<< Updated upstream
-const listingSchema = require('./schema.js')
-=======
 const { listingSchema, reviewSchema } = require('./schema.js');
->>>>>>> Stashed changes
 const Review = require('./models/reviews.js');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 const validateListing = (req, res, next) => {
     let {error} = listingSchema.validate(req.body, {abortEarly: false});
+    if(error){
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    }
+    else {
+        next();
+    }
+};
+
+const validateReview = (req, res, next) => {
+    let {error} = reviewSchema.validate(req.body, {abortEarly: false});
     if(error){
         let errMsg = error.details.map((el) => el.message).join(",");
         throw new ExpressError(400, errMsg);
@@ -110,7 +117,7 @@ app.delete("/listings/:id", async(req, res) => {
 });
 
 // Post Review
-app.post("/listings/:id/reviews", async(req, res) => {
+app.post("/listings/:id/reviews", validateReview, async(req, res) => {
     let listing = await Listing.findById(req.params.id);
     let {reviews} = req.body;
     let newReview = new Review(reviews);
