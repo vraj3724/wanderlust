@@ -6,7 +6,11 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const Listing = require('./models/listings.js')
 const ExpressError = require('./utils/ExpressError.js')
+<<<<<<< Updated upstream
 const listingSchema = require('./schema.js')
+=======
+const { listingSchema, reviewSchema } = require('./schema.js');
+>>>>>>> Stashed changes
 const Review = require('./models/reviews.js');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
