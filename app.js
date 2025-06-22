@@ -7,6 +7,7 @@ const ejsMate = require('ejs-mate');
 const Listing = require('./models/listings.js')
 const ExpressError = require('./utils/ExpressError.js')
 const listingSchema = require('./schema.js')
+const Review = require('./models/reviews.js');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 const validateListing = (req, res, next) => {
@@ -19,7 +20,6 @@ const validateListing = (req, res, next) => {
         next();
     }
 };
-
 
 main()
 .then(() => {
@@ -94,7 +94,7 @@ const newListing = new Listing({
     country
 });
     await newListing.save();
-    res.redirect("/listings");
+    res.redirect("/listings"); 
 });
 
 // Delete Route
@@ -103,6 +103,20 @@ app.delete("/listings/:id", async(req, res) => {
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     res.redirect("/listings");
+});
+
+// Post Review
+app.post("/listings/:id/reviews", async(req, res) => {
+    let listing = await Listing.findById(req.params.id);
+    let {reviews} = req.body;
+    let newReview = new Review(reviews);
+
+    Listing.reviews.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+    console.log("Review Saved")
+    res.send("Review Saved");
 });
 
 app.use((req, res, next) => {
