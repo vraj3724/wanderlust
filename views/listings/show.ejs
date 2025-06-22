@@ -17,11 +17,30 @@
                 </div>
             </div>
     </div>
-    <div class="btns">
+    <div class="btns mb-5">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn col-1 offset-2 me-3">Edit the Listing</a>
-
         <form action="/listings/<%= listing._id %>?_method=delete" method="post">
             <button class="btn btn-dark">Delete this Listing</button>
+        </form>
+    </div>
+
+    <div class="col-8 offset-2 mb-3">
+        <hr>
+        <h4>Leave a Review</h4>
+        <form>
+            <div class="mb-3 mt-3">
+                <label for="rating" class="form-label">Rating: </label>
+                <input type="range" min="1" max="5" class="form-range" id="rating" name="rating">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="comment" class="form-label">Comment: </label>
+                <textarea name="comment" id="comment" cols="30", rows="5" class="form-control"></textarea>
+            </div>
+
+            <div>
+                <button class="btn btn-outline-dark">Submit</button>
+            </div>
         </form>
     </div>
 </body>
