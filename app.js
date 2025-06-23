@@ -4,33 +4,11 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
-const Listing = require('./models/listings.js')
-const ExpressError = require('./utils/ExpressError.js')
-const { listingSchema, reviewSchema } = require('./schema.js');
-const Review = require('./models/reviews.js');
+
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-const validateListing = (req, res, next) => {
-    let {error} = listingSchema.validate(req.body, {abortEarly: false});
-    if(error){
-        let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
-    }
-    else {
-        next();
-    }
-};
-
-const validateReview = (req, res, next) => {
-    let {error} = reviewSchema.validate(req.body, {abortEarly: false});
-    if(error){
-        let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
-    }
-    else {
-        next();
-    }
-};
+const listing = require('./routes/listing.js');
+const review = require('./routes/review.js');
 
 main()
 .then(() => {
@@ -55,92 +33,9 @@ app.get("/", (req, res) => {
     res.send("The root is working");
 });
 
-// Index Route
-app.get("/listings", async (req, res) => {
-    let allListings = await Listing.find({});
-    res.render("listings/index", {allListings});
-});
+app.use("/listings", listing);
+app.use("/listings/:id/reviews", review);
 
-// New Route
-app.get("/listings/new", (req, res) => {
-    res.render("listings/new");
-});
-
-// Show Route
-app.get("/listings/:id", async (req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews");
-    res.render("listings/show", {listing});
-});
-
-// Edit Route
-app.get("/listings/:id/edit", async(req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit", {listing});
-});
-
-// Update Route
-app.put("/listings/:id", validateListing, async(req,res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
-    res.redirect("/listings");
-});
-
-// Create Route
-app.post("/listings", validateListing, async (req,res) => {
-    let {title, description, image, price, location, country} = req.body;
-    const imageObject = {
-    url: image.url,
-    filename: 'listing_image' 
-};
-
-const newListing = new Listing({
-    title,
-    description,
-    image: imageObject,
-    price,
-    location,
-    country
-});
-    await newListing.save();
-    res.redirect("/listings"); 
-});
-
-// Delete Route
-app.delete("/listings/:id", async(req, res) => {
-    let {id} = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-});
-
-// Post Review
-app.post("/listings/:id/reviews", validateReview, async(req, res) => {
-    let listing = await Listing.findById(req.params.id);
-    
-    const newReview = new Review({
-        rating: req.body.rating,
-        comment: req.body.comment
-    });
-
-    listing.reviews.push(newReview);
-
-    await newReview.save();
-    await listing.save();
-    console.log("Review Saved")
-    res.redirect(`/listings/${listing._id}`);
-});
-
-// Delete Review Route
-app.delete("/listings/:id/reviews/:reviewId", async(req, res) => {
-    let {id, reviewId} = req.params;
-
-    await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
-    await Review.findByIdAndDelete(reviewId);
-
-    res.redirect(`/listings/${id}`);
-})
 
 app.use((req, res, next) => {
   res.status(404).render("error", {
