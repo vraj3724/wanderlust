@@ -11,9 +11,7 @@ const listingSchema = Joi.object({
         }).required(),
 });
 
-<<<<<<< Updated upstream
-module.exports = listingSchema;
-=======
+
 const reviewSchema = Joi.object({
     comment: Joi.string().required(),
     rating: Joi.number().min(1).max(5).required(),
@@ -24,4 +22,4 @@ module.exports = {
   listingSchema,
   reviewSchema
 };
->>>>>>> Stashed changes
+
