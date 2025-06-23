@@ -69,7 +69,7 @@ app.get("/listings/new", (req, res) => {
 // Show Route
 app.get("/listings/:id", async (req, res) => {
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show", {listing});
 });
 
@@ -90,7 +90,6 @@ app.put("/listings/:id", validateListing, async(req,res) => {
 // Create Route
 app.post("/listings", validateListing, async (req,res) => {
     let {title, description, image, price, location, country} = req.body;
-
     const imageObject = {
     url: image.url,
     filename: 'listing_image' 
@@ -119,8 +118,11 @@ app.delete("/listings/:id", async(req, res) => {
 // Post Review
 app.post("/listings/:id/reviews", validateReview, async(req, res) => {
     let listing = await Listing.findById(req.params.id);
-    let {reviews} = req.body;
-    let newReview = new Review(reviews);
+    
+    const newReview = new Review({
+        rating: req.body.rating,
+        comment: req.body.comment
+    });
 
     listing.reviews.push(newReview);
 
