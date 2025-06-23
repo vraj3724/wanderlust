@@ -50,8 +50,7 @@
 
         <div class="row">
             <% for(review of listing.reviews) { %>
-            <div class="col-md-6 col-lg-4 mb-4 px-4 d-flex">
-                <div class="card flex-fill shadow-sm border" style="margin-right: 10px;">
+                <div class="card col-5 ms-3 mb-3 flex-fill shadow-lg border" style="margin-right: 10px;">
                         <div class="card-body">
                         <h5 class="card-title">Vraj</h5>
                         <p class="card-text"><%= review.comment %></p>
@@ -63,9 +62,12 @@
                                 <i class="far fa-star text-warning"></i>
                             <% } %>
                         </p>
+
+                        <form class="mb-3" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=delete" method="post">
+                            <button class="btn btn-sm btn-dark">Delete this Listing</button>
+                        </form>
                     </div>
                 </div>
-            </div>
             <% } %>
         </div>
     </div>

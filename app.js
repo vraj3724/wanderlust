@@ -130,8 +130,17 @@ app.post("/listings/:id/reviews", validateReview, async(req, res) => {
     await listing.save();
     console.log("Review Saved")
     res.redirect(`/listings/${listing._id}`);
-    res.redirect(`/listings/${listing._id}`);
 });
+
+// Delete Review Route
+app.delete("/listings/:id/reviews/:reviewId", async(req, res) => {
+    let {id, reviewId} = req.params;
+
+    await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+})
 
 app.use((req, res, next) => {
   res.status(404).render("error", {
