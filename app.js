@@ -13,8 +13,9 @@ const User = require('./models/user.js');
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-const listing = require('./routes/listing.js');
-const review = require('./routes/review.js');
+const listingRouter = require('./routes/listing.js');
+const reviewRouter = require('./routes/review.js');
+const userRouter = require('./routes/user.js');
 
 main()
 .then(() => {
@@ -66,8 +67,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/listings", listing);
-app.use("/listings/:id/reviews", review);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/signup", userRouter);
 
 
 app.use((req, res, next) => {
