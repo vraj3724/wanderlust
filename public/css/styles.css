@@ -13,7 +13,7 @@ body {
 /* Navbar */
 .navbar {
     height: 5rem;
-    background-color: white;
+    background-color: #ebebeb;
 }
 
 .fa-compass {
@@ -121,4 +121,15 @@ body {
 /* Show Buttons */
 .btns {
     display: flex; 
+}
+
+.signup-form-glass,
+.login-form-glass {
+  max-width: 600px;
+  padding: 5rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
