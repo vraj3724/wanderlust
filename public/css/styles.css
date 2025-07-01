@@ -67,7 +67,7 @@ body {
 /* Cards */
 .listing-card {
     border: none !important;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .card-img-top {
@@ -77,11 +77,20 @@ body {
 }
 
 .card-body {
+    font-size: 12px;
     padding: 0% !important;
+    margin: 0% !important;
 }
 
 .card-price {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
     font-weight: 600;
+}
+
+.card-desc {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .listing-links {

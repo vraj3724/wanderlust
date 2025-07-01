@@ -58,7 +58,7 @@ router.put("/:id", validateListing, async(req,res) => {
 
 // Create Route
 router.post("/", validateListing, async (req,res) => {
-    let {title, description, image, price, location, country} = req.body;
+    let { title, description, image, price, location, country, availability, host } = req.body;
     const imageObject = {
     url: image.url,
     filename: 'listing_image' 
@@ -70,7 +70,9 @@ const newListing = new Listing({
     image: imageObject,
     price,
     location,
-    country
+    country,
+    availability,
+    host
 });
     await newListing.save();
     req.flash("success", "New Listing Created");

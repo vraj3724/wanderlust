@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Review = require('./reviews.js')
+const Review = require('./reviews.js');
+const { required } = require("joi");
 
 const ListingSchema = new mongoose.Schema(
     {
@@ -32,6 +33,16 @@ const ListingSchema = new mongoose.Schema(
         country: {
             type: String,
             required: true
+        },
+
+        availability: {
+            type: String,
+            required: true
+        },
+
+        host: {
+            type: String,
+            required: true,
         },
 
         reviews: [
