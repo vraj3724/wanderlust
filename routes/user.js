@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
 const passport = require("passport");
+const { saveRedirectUrl } = require("../middleware");
 const router = express.Router();
 
 router.get("/signup", (req, res) => {
@@ -30,9 +31,9 @@ router.get("/login", (req, res) => {
     res.render("users/login");
 });
 
-router.post("/login", passport.authenticate("local", {failureRedirect: '/login', failureFlash: true}), async (req,res) => {
+router.post("/login", saveRedirectUrl, passport.authenticate("local", {failureRedirect: '/login', failureFlash: true}), async (req,res) => {
     req.flash("success", "Welcome back to wanderlust");
-    res.redirect("/listings");
+    res.redirect(res.locals.redirectUrl || "/listings");
 });
 
 router.get("/logout", (req, res, next) => {
