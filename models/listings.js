@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Review = require('./reviews.js');
+const User = require('./user.js')
 const { required } = require("joi");
 
 const ListingSchema = new mongoose.Schema(
@@ -9,9 +10,24 @@ const ListingSchema = new mongoose.Schema(
             required: true
         },
 
-        description: {
+        detail: {
+            type: String,
+            required: true,
+        },
+
+        about: {
             type: String,
             required: true
+        },
+
+        amenities: {
+            type: [String],
+            required: true,
+        },
+
+        shortDescription: {
+            type: String,
+            required: true,
         },
 
         image: {
@@ -41,7 +57,8 @@ const ListingSchema = new mongoose.Schema(
         },
 
         host: {
-            type: String,
+            type: mongoose.Schema.ObjectId,
+            ref: "User",
             required: true,
         },
 

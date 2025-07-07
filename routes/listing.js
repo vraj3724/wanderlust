@@ -9,6 +9,7 @@ const validateListing = (req, res, next) => {
     let {error} = listingSchema.validate(req.body, {abortEarly: false});
     if(error){
         let errMsg = error.details.map((el) => el.message).join(",");
+        console.log(errMsg);
         throw new ExpressError(400, errMsg);
     }
     else {
@@ -30,7 +31,7 @@ router.get("/new", isLoggedIn, (req, res) => {
 // Show Route
 router.get("/:id", async (req, res) => {
     let {id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews");
+    const listing = await Listing.findById(id).populate("reviews").populate("host");
     if(!listing) {
         req.flash("error", "Listing Doesn't exist");
         return res.redirect("/listings");
@@ -59,7 +60,8 @@ router.put("/:id",isLoggedIn, validateListing, async(req,res) => {
 
 // Create Route
 router.post("/", isLoggedIn, validateListing, async (req,res) => {
-    let { title, description, image, price, location, country, availability, host } = req.body;
+    let { title, shortDescription, image, price, location, country, availability, about, amenities, detail} = req.body;
+    let host = req.user._id;
     const imageObject = {
     url: image.url,
     filename: 'listing_image' 
@@ -67,13 +69,16 @@ router.post("/", isLoggedIn, validateListing, async (req,res) => {
 
 const newListing = new Listing({
     title,
-    description,
+    about,
     image: imageObject,
     price,
     location,
     country,
     availability,
-    host
+    host,
+    amenities,
+    shortDescription,
+    detail,
 });
     await newListing.save();
     req.flash("success", "New Listing Created");

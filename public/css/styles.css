@@ -82,6 +82,10 @@ body {
     margin: 0% !important;
 }
 
+.card-para {
+    font-size: 16px;
+}
+
 .card-price {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
