@@ -1,21 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ExpressError = require('../utils/ExpressError.js');
 const Listing = require('../models/listings.js');
-const { listingSchema, reviewSchema } = require('../schema.js');
-const {isLoggedIn} = require("../middleware.js");
-
-const validateListing = (req, res, next) => {
-    let {error} = listingSchema.validate(req.body, {abortEarly: false});
-    if(error){
-        let errMsg = error.details.map((el) => el.message).join(",");
-        console.log(errMsg);
-        throw new ExpressError(400, errMsg);
-    }
-    else {
-        next();
-    }
-};
+const {isLoggedIn, isHost} = require("../middleware.js");
+const {validateListing} = require("../middleware.js");
 
 // Index Route
 router.get("/", async (req, res) => {
@@ -40,7 +27,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Edit Route
-router.get("/:id/edit", isLoggedIn, async(req, res) => {
+router.get("/:id/edit", isLoggedIn, isHost, async(req, res) => {
     let {id} = req.params;
     const listing = await Listing.findById(id);
         if(!listing) {
@@ -51,11 +38,11 @@ router.get("/:id/edit", isLoggedIn, async(req, res) => {
 });
 
 // Update Route
-router.put("/:id",isLoggedIn, validateListing, async(req,res) => {
+router.put("/:id",isLoggedIn, isHost, validateListing, async(req,res) => {
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
     req.flash("success", "Listing Updated");
-    res.redirect("/listings");
+    res.redirect(`/listings/${id}`);
 });
 
 // Create Route
@@ -86,7 +73,7 @@ const newListing = new Listing({
 });
 
 // Delete Route
-router.delete("/:id", isLoggedIn, async(req, res) => {
+router.delete("/:id", isLoggedIn, isHost, async(req, res) => {
     let {id} = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);

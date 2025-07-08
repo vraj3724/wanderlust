@@ -73,7 +73,6 @@
         </div>
     </div>
 
-        <% if (currUser && currUser._id.equals(listing.host._id)) { %>
             <div class="btns mb-5">
                 <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn col-1 offset-2 me-3">
                     Edit the Listing
@@ -82,7 +81,6 @@
                     <button class="btn btn-dark">Delete this Listing</button>
                 </form>
             </div>
-        <% } %>
 
 
 
