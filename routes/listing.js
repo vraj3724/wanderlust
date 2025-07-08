@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Listing = require('../models/listings.js');
 const {isLoggedIn, isHost} = require("../middleware.js");
 const {validateListing} = require("../middleware.js");
 const listingController = require('../controllers/listing.js');
