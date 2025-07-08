@@ -5,17 +5,24 @@ const router = express.Router();
 
 const userController = require('../controllers/user.js')
 
-router.get("/signup", (req, res) => {
-    res.render('users/signup');
-});
+router
+    .route("/signup")
+    .get((req, res) => {
+        res.render('users/signup');
+    })
+    .post(userController.signup
+);
 
-router.post("/signup", userController.signup);
-
-router.get("/login", (req, res) => {
-    res.render("users/login");
-});
-
-router.post("/login", saveRedirectUrl, passport.authenticate("local", {failureRedirect: '/login', failureFlash: true}), userController.login);
+router
+    .route("/login")
+    .get((req, res) => {
+        res.render("users/login");
+    })
+    .post(
+        saveRedirectUrl, 
+        passport.authenticate("local", {failureRedirect: '/login', failureFlash: true}), 
+        userController.login
+);
 
 router.get("/logout", userController.logout);
 
