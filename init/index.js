@@ -30,7 +30,7 @@ const initDB = async () => {
 
     // Add 6 reviews for this listing
     for (let i = 0; i < 6; i++) {
-      const { comment, rating } = sampleReviews[reviewIndex++];
+      const { comment, rating } = sampleReviews[reviewIndex++]; 
       const review = new Review({ comment, rating });
       await review.save();
       reviewIds.push(review._id);
