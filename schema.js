@@ -10,9 +10,6 @@ const listingSchema = Joi.object({
   price: Joi.number().required().min(0),
   availability: Joi.string().required(),
   amenities: Joi.array().items(Joi.string()).required(),         
-  image: Joi.object({
-    url: Joi.string().uri().required()
-  }).required()
 });
 
 

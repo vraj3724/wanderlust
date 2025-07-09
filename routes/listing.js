@@ -10,14 +10,12 @@ const listingController = require('../controllers/listing.js');
 router
     .route("/")
     .get(listingController.index)
-    // .post(
-    //     isLoggedIn,
-    //     validateListing, 
-    //     listingController.createList
-    // );
-    .post(upload.single('image'), (req, res) => {
-        res.send(req.file);
-    });
+    .post(
+        isLoggedIn,
+        upload.single('image'),
+        validateListing, 
+        listingController.createList
+    );
 
 // New Route
 router.get("/new", isLoggedIn, listingController.newForm);

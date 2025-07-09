@@ -39,9 +39,11 @@ module.exports.updateList = async(req,res) => {
 module.exports.createList = async (req,res) => {
     let { title, shortDescription, image, price, location, country, availability, about, amenities, detail} = req.body;
     let host = req.user._id;
+    let newUrl = req.file.path;
+    let newFilename = req.file.filename;
     const imageObject = {
-    url: image.url,
-    filename: 'listing_image' 
+    url: newUrl,
+    filename: newFilename, 
 };
 
 const newListing = new Listing({
