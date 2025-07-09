@@ -26,7 +26,8 @@ router
     .put(
         isLoggedIn, 
         isHost, 
-        validateListing, 
+        validateListing,
+        upload.single('image'), 
         listingController.updateList
     )
     .delete(
