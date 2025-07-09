@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({dest: 'uploads/'});
 const {isLoggedIn, isHost} = require("../middleware.js");
 const {validateListing} = require("../middleware.js");
 const listingController = require('../controllers/listing.js');
@@ -7,11 +9,14 @@ const listingController = require('../controllers/listing.js');
 router
     .route("/")
     .get(listingController.index)
-    .post(
-        isLoggedIn,
-        validateListing, 
-        listingController.createList
-    );
+    // .post(
+    //     isLoggedIn,
+    //     validateListing, 
+    //     listingController.createList
+    // );
+    .post(upload.single('image'), (req, res) => {
+        res.send(req.file);
+    });
 
 // New Route
 router.get("/new", isLoggedIn, listingController.newForm);
