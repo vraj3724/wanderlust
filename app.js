@@ -18,6 +18,7 @@ const User = require('./models/user.js');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 const listingRouter = require('./routes/listing.js');
+const mylistingRouter = require('./routes/mylisting.js');
 const reviewRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
 
@@ -32,6 +33,8 @@ async function main() {
     await mongoose.connect(MONGO_URL);
 }
 
+app.locals.mapToken = process.env.MAP_TOKEN;
+console.log(process.env.MAP_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
@@ -74,6 +77,7 @@ app.use((req, res, next) => {
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
+app.use("/mylistings", mylistingRouter);
 app.use("/", userRouter);
 
 

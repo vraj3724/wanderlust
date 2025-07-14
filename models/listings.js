@@ -72,7 +72,6 @@ const ListingSchema = new mongoose.Schema(
 );
 
 ListingSchema.post("findOneAndDelete", async(listing) => {
-    console.log("🔥 Deletion middleware triggered!");
   if(listing) {
     await Review.deleteMany({_id: {$in: listing.reviews}});
   }

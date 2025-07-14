@@ -1,5 +1,9 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+
+    <script>
+        const mapToken = "<%= mapToken %>";
+    </script>
+    
     <div class="row">
         <div class="col-8 offset-2">
             <h2 style="font-weight: 600;"><%= listing.title %></h2>
@@ -74,15 +78,19 @@
     </div>
 
         <% if (currUser && currUser._id.equals(listing.host._id)) { %>
-            <div class="btns mb-5">
-                <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn col-1 offset-2 me-3">
+        <div class="col-8 offset-2 mb-4 d-flex flex-wrap gap-3">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger">
                     Edit the Listing
                 </a>
-                <form action="/listings/<%= listing._id %>?_method=delete" method="post" style="display: inline;">
-                    <button class="btn btn-dark">Delete this Listing</button>
-                </form>
-            </div>
+
+            <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-dark">
+                    Delete this Listing
+                </button>
+            </form>
+        </div>
         <% } %>
+
  
 
     <div class="col-8 offset-2 mb-3">
@@ -111,4 +119,10 @@
             <% } %>
         </div>
     </div>
-</body>
+
+    <div class="col-8 offset-2 mb-3">
+        <h3>Where you'll be</h3>
+        <div id="map"></div>
+    </div>
+
+<script src="/js/map.js"></script>

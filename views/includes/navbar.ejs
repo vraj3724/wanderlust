@@ -8,6 +8,9 @@
       <a class="nav-item nav-link" href="/">Home</a>
       <a class="nav-item nav-link" href="/listings">All Listings</a>
       <a class="nav-item nav-link" href="/listings/new">New Listing</a>
+      <% if (currUser) { %>
+       <a class="nav-item nav-link" href="/mylistings">My Listings</a>
+      <% } %>
     </div>
 
     <div class="navbar-nav ms-auto">
