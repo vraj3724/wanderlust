@@ -64,7 +64,9 @@ let response = await geocodingClient.forwardGeocode({
   limit: 1
 })
   .send();
-  console.log(response.body.features[0].geometry);
+
+
+const geometry = response.body.features[0].geometry;
 
 const newListing = new Listing({
     title,
@@ -78,8 +80,11 @@ const newListing = new Listing({
     amenities,
     shortDescription,
     detail,
+    geometry,
 });
-    await newListing.save();
+
+    let savedListing = await newListing.save();
+    console.log(savedListing);
     req.flash("success", "New Listing Created");
     res.redirect("/listings"); 
 };
@@ -89,6 +94,6 @@ module.exports.deleteList = async(req, res) => {
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     req.flash("success", "Listing Deleted");
-    res.redirect("/listings");
+    res.redirect("/listings/");
 };
 
