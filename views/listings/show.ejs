@@ -2,6 +2,8 @@
 
     <script>
         const mapToken = "<%= mapToken %>";
+        const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+        const coords = coordinates.map(Number);
     </script>
     
     <div class="row">

@@ -3,12 +3,18 @@ mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v12',
-  projection: 'globe',
-  zoom: 6,
-  center: [72.5714, 23.0225]
+  center: coords,
+  zoom: 11,
 });
 
-// Optional: Add a console log to confirm map loads its content
-map.on('load', () => {
-    console.log('Map has loaded all its resources!');
-});
+console.log(coordinates);
+
+const marker = new mapboxgl.Marker({ color: "red" }) // 🔴 The red pin
+  .setLngLat(coordinates)                              // 📍 Set location
+  .setPopup(                                          // 💬 Attach popup
+    new mapboxgl.Popup({ offset: 25 })                // offset makes it float nicely
+      .setHTML("<h4>You'll be here</h4>")
+      .setMaxWidth("200px")            // popup content
+  )
+  .addTo(map);                                        // add it to the map
+
