@@ -54,9 +54,9 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-    res.send("The root is working");
-});
+// app.get("/", (req, res) => {
+//     res.send("The root is working");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());

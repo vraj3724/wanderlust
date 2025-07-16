@@ -1,6 +1,71 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h3>Below are all the listings</h3>
+<style>
+    .filter {
+        position: relative;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+    .filter::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0%;
+        width: 0%;
+        height: 2px;
+        background-color: #ff5e5e;
+        border-radius: 1px;
+        transition: width 0.3s ease;
+    }
+
+    .filter:hover {
+  opacity: 1.2;
+}
+
+    .filter:hover::after {
+    width: 100%;
+    }
+
+    .fa-icon{
+      font-size: 20px;
+    }
+
+    .fa-text {
+        font-size: 18px;
+    }
+
+.tax-info{
+  display: none;
+}
+
+</style>
+<% if (typeof showFilters !== 'undefined' && showFilters) { %>
+    <div id="filters" class="d-flex justify-content-center gap-4 py-2 mt-0">
+      <div class="filter text-center">
+        <i class="fa-solid fa-fire fa-icon"></i>
+        <p class="mb-2 fa-text">Trending</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fa-mountain fa-icon"></i>
+        <p class="mb-2 fa-text">Adventure</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fa-water fa-icon"></i>
+        <p class="mb-2 fa-text">Beach</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fa-snowflake fa-icon"></i>
+        <p class="mb-2 fa-text">Snow</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fa-house fa-icon"></i>
+        <p class="mb-2 fa-text">Villa</p>
+      </div>
+    </div>
+  <% } %>
+      <h3>Below are the Listings</h3>x
     <div class="row row-cols-xxl-6 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-2">
         <% for( let listing of allListings ) { %>
             <a href="/listings/<%= listing._id %>" class="listing-links">
