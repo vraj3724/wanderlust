@@ -29,11 +29,11 @@
     }
 
     .fa-icon{
-      font-size: 20px;
+      font-size: 15px;
     }
 
     .fa-text {
-        font-size: 18px;
+        font-size: 15px;
     }
 
 .tax-info{
@@ -63,9 +63,17 @@
         <i class="fa-solid fa-house fa-icon"></i>
         <p class="mb-2 fa-text">Villa</p>
       </div>
+            <div class="filter text-center">
+        <i class="fa-solid fa-tractor fa-icon"></i>
+        <p class="mb-2 fa-text">Farm</p>
+      </div>
+            <div class="filter text-center">
+        <i class="fa-solid fa-font-awesome fa-icon"></i>
+        <p class="mb-2 fa-text">Castle</p>
+      </div>
     </div>
   <% } %>
-      <h3>Below are the Listings</h3>x
+      <h3>Below are the Listings</h3>
     <div class="row row-cols-xxl-6 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-2">
         <% for( let listing of allListings ) { %>
             <a href="/listings/<%= listing._id %>" class="listing-links">
