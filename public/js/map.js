@@ -9,12 +9,12 @@ const map = new mapboxgl.Map({
 
 console.log(coordinates);
 
-const marker = new mapboxgl.Marker({ color: "red" }) // 🔴 The red pin
-  .setLngLat(coordinates)                              // 📍 Set location
-  .setPopup(                                          // 💬 Attach popup
-    new mapboxgl.Popup({ offset: 25 })                // offset makes it float nicely
+const marker = new mapboxgl.Marker({ color: "red" }) 
+  .setLngLat(coordinates)                              
+  .setPopup(                                          
+    new mapboxgl.Popup({ offset: 25 })               
       .setHTML("<h4>You'll be here</h4>")
-      .setMaxWidth("200px")            // popup content
+      .setMaxWidth("200px")           
   )
-  .addTo(map);                                        // add it to the map
+  .addTo(map);                                       
 
