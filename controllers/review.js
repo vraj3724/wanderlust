@@ -6,7 +6,8 @@ module.exports.createReview = async(req, res) => {
     
     const newReview = new Review({
         rating: req.body.rating,
-        comment: req.body.comment
+        comment: req.body.comment,
+        author: req.user._id
     });
 
     listing.reviews.push(newReview);

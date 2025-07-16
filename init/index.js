@@ -30,8 +30,8 @@ const initDB = async () => {
 
     // Add 6 reviews for this listing
     for (let i = 0; i < 6; i++) {
-      const { comment, rating } = sampleReviews[reviewIndex++]; 
-      const review = new Review({ comment, rating });
+      const { comment, rating, author } = sampleReviews[reviewIndex++]; 
+      const review = new Review({ comment, rating, author: new mongoose.Types.ObjectId(author) });
       await review.save();
       reviewIds.push(review._id);
     }

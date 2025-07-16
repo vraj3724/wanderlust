@@ -69,6 +69,11 @@ const ListingSchema = new mongoose.Schema(
             }
         ],
 
+        category: {
+            type: String,
+            enum: ["Trending", "Adventure", "Beach", "Snow", "Villa", "Farm", "Castle"],
+        },
+
         geometry: {
             type: {
                 type: String,

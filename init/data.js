@@ -13,7 +13,13 @@ const sampleListings = [
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "10 - 12 September"
+    availability: "10 - 12 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-118.7798, 34.0259]
+    },
+    category: "Beach"
+
   },
   {
     title: "Modern Loft in Downtown",
@@ -29,7 +35,12 @@ const sampleListings = [
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
     host: "6866f0f5ecc70b0ebf47c9a0",
-    availability: "25 - 26 August"
+    availability: "25 - 26 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-74.0060, 40.7128]
+    },
+    category: "Trending"
   },
   {
     title: "Mountain Retreat",
@@ -45,7 +56,12 @@ const sampleListings = [
     detail: "Loft bed , Shared bath access",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
     host: "6866f0d6ecc70b0ebf47c999",
-    availability: "10 - 13 August"
+    availability: "10 - 13 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-106.8175, 39.1911]
+    },
+    category: "Snow"
   },
   {
     title: "Historic Villa in Tuscany",
@@ -61,7 +77,12 @@ const sampleListings = [
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
     host: "6866f039ecc70b0ebf47c984",
-    availability: "18 - 21 July"
+    availability: "18 - 21 July",
+    geometry: {
+      type: "Point",
+      coordinates: [11.2558, 43.7696]
+    },
+    category: "Villa"
   },
   {
     title: "Secluded Treehouse Getaway",
@@ -77,7 +98,13 @@ const sampleListings = [
     detail: "Loft bed , Shared bath access",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
     host: "6866ec391c43245c7b6080ad",
-    availability: "24 - 27 October"
+    availability: "24 - 27 October",
+    geometry: {
+      type: "Point",
+      coordinates: [-122.6765, 45.5231]
+    },
+    category: "Adventure"
+
   },
   {
     title: "Beachfront Paradise",
@@ -93,7 +120,12 @@ const sampleListings = [
     detail: "1 queen bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "15 - 17 October"
+    availability: "15 - 17 October",
+    geometry: {
+      type: "Point",
+      coordinates: [-86.8515, 21.1619]
+    },
+    category: "Beach"
   },
   {
     title: "Rustic Cabin by the Lake",
@@ -109,7 +141,13 @@ const sampleListings = [
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
     host: "6866f0f5ecc70b0ebf47c9a0",
-    availability: "24 - 27 July"
+    availability: "24 - 27 July",
+    geometry: {
+      type: "Point",
+      coordinates: [-120.0440, 39.0968]
+    },
+    category: "Adventure"
+
   },
   {
     title: "Luxury Penthouse with City Views",
@@ -125,7 +163,12 @@ const sampleListings = [
     detail: "2 queen beds -  Ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
     host: "6866f0d6ecc70b0ebf47c999",
-    availability: "18 - 21 August"
+    availability: "18 - 21 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-118.2437, 34.0522]
+    },
+    category: "Trending"
   },
   {
     title: "Ski-In/Ski-Out Chalet",
@@ -141,7 +184,12 @@ const sampleListings = [
     detail: "1 king bed , Private bathroom",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "20 - 23 September"
+    availability: "20 - 23 September",
+    geometry: {
+      type: "Point",
+      coordinates: [7.2333, 46.1000]
+    },
+    category: "Snow"
   },
   {
     title: "Safari Lodge in the Serengeti",
@@ -157,7 +205,12 @@ const sampleListings = [
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Mini fridge", "Microwave", "Toiletries" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "11 - 14 October"
+    availability: "11 - 14 October",
+    geometry: {
+      type: "Point",
+      coordinates: [34.6857, -2.3333]
+    },
+    category: "Adventure"
   },
   {
     title: "Historic Canal House",
@@ -173,7 +226,12 @@ const sampleListings = [
     detail: "1 double bed -  Shared bathroom",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "12 - 14 September"
+    availability: "12 - 14 September",
+    geometry: {
+      type: "Point",
+      coordinates: [4.9041, 52.3676]
+    },
+    category: "Trending"
   },
   {
     title: "Private Island Retreat",
@@ -189,7 +247,12 @@ const sampleListings = [
     detail: "1 king bed ,  Private bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
     host: "6866ec391c43245c7b6080ad",
-    availability: "23 - 26 October"
+    availability: "23 - 26 October",
+    geometry: {
+      type: "Point",
+      coordinates: [178.0650, -17.7134]
+    },
+    category: "Beach"
   },
   {
     title: "Charming Cottage in the Cotswolds",
@@ -205,7 +268,12 @@ const sampleListings = [
     detail: "Loft bed ,  Shared bath access",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
     host: "6866f0d6ecc70b0ebf47c999",
-    availability: "15 - 16 September"
+    availability: "15 - 16 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-1.8433, 51.8330]
+    },
+    category: "Farm"
   },
   {
     title: "Historic Brownstone in Boston",
@@ -221,7 +289,12 @@ const sampleListings = [
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
     host: "6866f0f5ecc70b0ebf47c9a0",
-    availability: "24 - 25 October"
+    availability: "24 - 25 October",
+    geometry: {
+      type: "Point",
+      coordinates: [-71.0589, 42.3601]
+    },
+    category: "Trending"
   },
   {
     title: "Beachfront Bungalow in Bali",
@@ -237,7 +310,12 @@ const sampleListings = [
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "13 - 15 October"
+    availability: "13 - 15 October",
+    geometry: {
+      type: "Point",
+      coordinates: [115.1889, -8.4095]
+    },
+    category: "Beach"
   },
   {
     title: "Mountain View Cabin in Banff",
@@ -253,7 +331,12 @@ const sampleListings = [
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "13 - 16 July"
+    availability: "13 - 16 July",
+    geometry: {
+      type: "Point",
+      coordinates: [-115.5708, 51.1784]
+    },
+    category: "Snow"
   },
   {
     title: "Art Deco Apartment in Miami",
@@ -269,7 +352,12 @@ const sampleListings = [
     detail: "2 single beds , Private ensuite",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
     host: "6866ec391c43245c7b6080ad",
-    availability: "17 - 19 September"
+    availability: "17 - 19 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-80.1918, 25.7617]
+    },
+    category: "Beach"
   },
   {
     title: "Tropical Villa in Phuket",
@@ -285,7 +373,12 @@ const sampleListings = [
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "20 - 23 July"
+    availability: "20 - 23 July",
+    geometry: {
+      type: "Point",
+      coordinates: [98.3381, 7.8804]
+    },
+    category: "Villa"
   },
   {
     title: "Historic Castle in Scotland",
@@ -301,7 +394,12 @@ const sampleListings = [
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
     host: "6866f039ecc70b0ebf47c984",
-    availability: "22 - 23 September"
+    availability: "22 - 23 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-4.2026, 57.1200]
+    },
+    category: "Castle"
   },
   {
     title: "Desert Oasis in Dubai",
@@ -317,7 +415,12 @@ const sampleListings = [
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Mini fridge", "Microwave", "Toiletries" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "14 - 17 October"
+    availability: "14 - 17 October",
+    geometry: {
+      type: "Point",
+      coordinates: [55.2708, 25.2048]
+    },
+    category: "Trending"
   },
   {
     title: "Rustic Log Cabin in Montana",
@@ -333,7 +436,13 @@ const sampleListings = [
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "22 - 25 September"
+    availability: "22 - 25 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-110.3626, 46.8797]
+    },
+    category: "Farm"
+
   },
   {
     title: "Beachfront Villa in Greece",
@@ -349,7 +458,12 @@ const sampleListings = [
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
     host: "6866f0f5ecc70b0ebf47c9a0",
-    availability: "13 - 16 September"
+    availability: "13 - 16 September",
+    geometry: {
+      type: "Point",
+      coordinates: [25.3289, 37.4467]
+    },
+    category: "Villa"
   },
   {
     title: "Eco-Friendly Treehouse Retreat",
@@ -365,7 +479,12 @@ const sampleListings = [
     detail: "Double bed , Attached bathroom",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "21 - 23 September"
+    availability: "21 - 23 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-84.0907, 9.7489]
+    },
+    category: "Adventure"
   },
   {
     title: "Historic Cottage in Charleston",
@@ -381,7 +500,12 @@ const sampleListings = [
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
     host: "6866f0d6ecc70b0ebf47c999",
-    availability: "20 - 23 August"
+    availability: "20 - 23 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-79.9311, 32.7765]
+    },
+    category: "Farm"
   },
   {
     title: "Modern Apartment in Tokyo",
@@ -397,7 +521,12 @@ const sampleListings = [
     detail: "Studio with sofa bed , Shared bath",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "14 - 15 September"
+    availability: "14 - 15 September",
+    geometry: {
+      type: "Point",
+      coordinates: [139.6917, 35.6895]
+    },
+    category: "Trending"
   },
   {
     title: "Lakefront Cabin in New Hampshire",
@@ -413,7 +542,12 @@ const sampleListings = [
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
     host: "6866f0bfecc70b0ebf47c992",
-    availability: "11 - 13 August"
+    availability: "11 - 13 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-71.5724, 43.1939]
+    },
+    category: "Farm"
   },
   {
     title: "Luxury Villa in the Maldives",
@@ -429,7 +563,12 @@ const sampleListings = [
     detail: "1 double bed , Shared bathroom",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "15 - 18 August"
+    availability: "15 - 18 August",
+    geometry: {
+      type: "Point",
+      coordinates: [73.2207, 3.2028]
+    },
+    category: "Villa"
   },
   {
     title: "Ski Chalet in Aspen",
@@ -445,7 +584,12 @@ const sampleListings = [
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "19 - 22 September"
+    availability: "19 - 22 September",
+    geometry: {
+      type: "Point",
+      coordinates: [-106.8175, 39.1911]
+    },
+    category: "Snow"
   },
   {
     title: "Secluded Beach House in Costa Rica",
@@ -461,7 +605,12 @@ const sampleListings = [
     detail: "1 double bed , Shared bathroom",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
     host: "6866f0a2ecc70b0ebf47c98b",
-    availability: "11 - 14 August"
+    availability: "11 - 14 August",
+    geometry: {
+      type: "Point",
+      coordinates: [-84.0907, 9.7489]
+    },
+    category: "Adventure"
   }
 ];
 
