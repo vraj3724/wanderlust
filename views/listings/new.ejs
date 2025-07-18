@@ -28,6 +28,23 @@
                     <div class="invalid-feedback">Please Enter About the property</div>
                 </div>
 
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownCategoryBtn" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80%;">
+                        <span id="selectedCategory">Select Category</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <% const categories = ["Adventure", "Beach", "Snow", "Villa", "Farm", "Castle"]; %>
+                        <% categories.forEach(category => { %>
+                        <li><button class="dropdown-item" type="button" onclick="selectCategory('<%= category %>')"><%= category %></button></li>
+                        <% }) %>
+                    </ul>
+                    </div>
+                    <input type="hidden" name="category" id="categoryInput">
+                    <div class="invalid-feedback">Please select a category.</div>
+                </div>
+
 
                 <div class="form-group mb-4">
                     <label for="amenities" class="form-label">Amenities:</label><br>
@@ -85,4 +102,11 @@
             </form>
                 </div>
     </div>
+
+    <script>
+  function selectCategory(category) {
+    document.getElementById('selectedCategory').textContent = category;
+    document.getElementById('categoryInput').value = category;
+  }
+</script>
 </body>

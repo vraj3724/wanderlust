@@ -29,7 +29,6 @@ module.exports.showList = async (req, res) => {
         req.flash("error", "Listing Doesn't exist");
         return res.redirect("/listings");
     };
-    console.log(listing.reviews.map(r => r.author?.username || r.author));
     res.render("listings/show", {listing});
 };
 
@@ -61,7 +60,7 @@ module.exports.updateList = async(req,res) => {
 };
 
 module.exports.createList = async (req,res) => {
-    let { title, shortDescription, image, price, location, country, availability, about, amenities, detail} = req.body;
+    let { title, shortDescription, image, price, location, country, availability, about, amenities, detail, category} = req.body;
     let host = req.user._id;
     let newUrl = req.file.path;
     let newFilename = req.file.filename;
@@ -92,6 +91,7 @@ const newListing = new Listing({
     shortDescription,
     detail,
     geometry,
+    category,
 });
 
     let savedListing = await newListing.save();
