@@ -12,8 +12,9 @@ body {
 
 /* Navbar */
 .navbar {
+    border-bottom: none !important;
     height: 5rem;
-    background-color: white;
+    background-color: #fafafa !important;
 }
 
 .fa-compass {
@@ -22,8 +23,27 @@ body {
 }
 
 .nav-link {
+    text-decoration: none;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
     color:#222222 !important;
     font-weight: 500 !important;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0%;
+  background: #ff5e5e;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 /* Footer */
@@ -47,7 +67,8 @@ body {
 
 
 .f-info-socials {
-    font-size: 1.3rem;
+    margin-left: 20px;
+    font-size: 1.5rem;
 }
 
 .f-info-socials i {
@@ -57,7 +78,7 @@ body {
 .f-info {
     text-align: center;
     height: 8rem;
-    background-color: #ebebeb;
+    background-color: #fafafa;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -65,9 +86,9 @@ body {
 }
 
 /* Cards */
-.card {
+.listing-card {
     border: none !important;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .card-img-top {
@@ -77,11 +98,24 @@ body {
 }
 
 .card-body {
+    font-size: 12px;
     padding: 0% !important;
+    margin: 0% !important;
+}
+
+.card-para {
+    font-size: 16px;
 }
 
 .card-price {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
     font-weight: 600;
+}
+
+.card-desc {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .listing-links {
@@ -112,4 +146,21 @@ body {
 /* Show Buttons */
 .btns {
     display: flex; 
+}
+
+.signup-form-glass,
+.login-form-glass {
+  max-width: 600px;
+  padding: 5rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Map */
+#map {
+    height: 400px;
+    width: 80vh;
 }

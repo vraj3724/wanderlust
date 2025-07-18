@@ -3,37 +3,91 @@
     <div class="row">
         <div class="col-8 offset-2">
             <h3 class="mb-3">Edit the Listing: </h3>
-            <form action="/listings/<%= listing._id %>?_method=put" method="post" class="needs-validation" novalidate>
+            <form action="/listings/<%= listing._id %>?_method=put" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" name="title" value="<%= listing.title %>" class="form-control" required>
                     <div class="invalid-feedback">Please Enter a Title</div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea name="description" class="form-control" required><%= listing.description %></textarea>
-                    <div class="invalid-feedback">Please Enter a Description</div>
+                    <label for="shortDescription" class="form-label">Short Description</label>
+                    <textarea name="shortDescription" class="form-control" required><%= listing.shortDescription %></textarea>
+                    <div class="invalid-feedback">Please Enter a Short Description</div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image Link</label>
-                    <input type="text" name="image[url]" value="<%= listing.image.url %>" class="form-control">
+                    <label for="detail" class="form-label">Detail</label>
+                    <textarea name="detail" class="form-control" required><%= listing.detail %></textarea>
+                    <div class="invalid-feedback">Please Enter Detail About Property</div>
                 </div>
+
+                <div class="mb-3">
+                    <label for="about" class="form-label">About</label>
+                    <textarea name="about" class="form-control" required><%= listing.about %></textarea>
+                    <div class="invalid-feedback">Please Enter About the property</div>
+                </div>
+
+
+                <div class="form-group mb-4">
+                    <label for="amenities" class="form-label">Amenities:</label><br>
+
+                    <% const amenitiesList = [
+                        "Wi-Fi", "Air conditioning", "Free parking", "Kitchen", "Washer",
+                        "Dryer", "Heating", "Private pool", "Hot tub", "Fireplace",
+                        "Balcony", "Outdoor dining", "Gym access", "TV", "BBQ grill",
+                        "Elevator", "Toiletries", "Coffee maker", "Iron", "Workspace",
+                        "Pet-friendly", "Smoke alarm", "First aid kit", "Dishwasher", "Mini fridge"
+                    ]; %>
+
+                    <% amenitiesList.forEach(function(amenity, index) { %>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="amenities" value="<%= amenity %>" id="amenity-<%= index %>" <%= listing.amenities.includes(amenity) ? "checked" : "" %> >
+                        <label class="form-check-label" for="amenity-<%= index %>"><%= amenity %></label>
+                        </div>
+                    <% }) %>
+                    </div>
+
+                    <div class="mb-3">
+                        Original Listing Image <br>
+                        <img src="<%= originalImageUrl %>">
+                    </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
                     <input type="number" name="price" value="<%= listing.price %>" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Pricey</div>
+                    <div class="invalid-feedback">Please Enter a Price</div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-5 mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="location" value="<%= listing.location %>" class="form-control" required>
+                        <div class="invalid-feedback">Please Enter a Location</div>
+                    </div>
+
+                    <div class="col-7 mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" name="country" value="<%= listing.country %>" class="form-control" required>
+                        <div class="invalid-feedback">Please Enter a Country</div>
+                    </div>
+                </div>
+
                 <div class="mb-3">
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" name="location" value="<%= listing.location %>" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Location</div>
+                    <label for="availability" class="form-label">Availability</label>
+                    <input type="text" name="availability" value="<%= listing.availability %>" class="form-control" required>
+                    <div class="invalid-feedback">Please Enter a Date</div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" name="country" value="<%= listing.country %>" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Country</div>
+                    <button class="btn btn-dark add-btn">Edit</button>
                 </div>
-                <button class="btn btn-dark add-btn">Edit</button>
+
             </form>
         </div>
     </div>

@@ -1,25 +1,27 @@
+if (process.env.NODE_ENV != "production") {
+  require('dotenv').config();
+};
+
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
-const Listing = require('./models/listings.js')
-const ExpressError = require('./utils/ExpressError.js')
-const listingSchema = require('./schema.js')
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const cookie = require('cookie');
+const flash = require('connect-flash');
+const passport = require('passport');
+const localStrategy = require('passport-local');
+const User = require('./models/user.js');
 
-const validateListing = (req, res, next) => {
-    let {error} = listingSchema.validate(req.body, {abortEarly: false});
-    if(error){
-        let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
-    }
-    else {
-        next();
-    }
-};
+const dbUrl = process.env.ATLASDB_URL;
 
+const listingRouter = require('./routes/listing.js');
+const mylistingRouter = require('./routes/mylisting.js');
+const reviewRouter = require('./routes/review.js');
+const userRouter = require('./routes/user.js');
 
 main()
 .then(() => {
@@ -29,9 +31,11 @@ main()
 });
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
+app.locals.mapToken = process.env.MAP_TOKEN;
+console.log(process.env.MAP_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
@@ -40,70 +44,57 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req, res) => {
-    res.send("The root is working");
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret : process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
 });
 
-// Index Route
-app.get("/listings", async (req, res) => {
-    let allListings = await Listing.find({});
-    res.render("listings/index", {allListings});
+store.on("error", () => {
+  console.log("Error in Mongo Store", err);
 });
 
-// New Route
-app.get("/listings/new", (req, res) => {
-    res.render("listings/new");
-});
 
-// Show Route
-app.get("/listings/:id", async (req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/show", {listing});
-});
-
-// Edit Route
-app.get("/listings/:id/edit", async(req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit", {listing});
-});
-
-// Update Route
-app.put("/listings/:id", validateListing, async(req,res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
-    res.redirect("/listings");
-});
-
-// Create Route
-app.post("/listings", validateListing, async (req,res) => {
-    let {title, description, image, price, location, country} = req.body;
-
-    const imageObject = {
-    url: image.url,
-    filename: 'listing_image' 
+const sessionOptions = {
+  store,
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  },
 };
 
-const newListing = new Listing({
-    title,
-    description,
-    image: imageObject,
-    price,
-    location,
-    country
-});
-    await newListing.save();
-    res.redirect("/listings");
+// app.get("/", (req, res) => {
+//     res.send("The root is working");
+// });
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
+  next();
 });
 
-// Delete Route
-app.delete("/listings/:id", async(req, res) => {
-    let {id} = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-});
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/mylistings", mylistingRouter);
+app.use("/", userRouter);
+
 
 app.use((req, res, next) => {
   res.status(404).render("error", {
