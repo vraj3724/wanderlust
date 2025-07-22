@@ -23,88 +23,93 @@
     }
 
     .filter:hover {
-  opacity: 1.2;
-}
-
-    .filter:hover::after {
-    width: 100%;
+        opacity: 1.2;
     }
 
-    .fa-icon{
-      font-size: 15px;
+    .filter:hover::after {
+        width: 100%;
+    }
+
+    .fa-icon {
+        font-size: 15px;
     }
 
     .fa-text {
         font-size: 15px;
     }
 
-.tax-info{
-  display: none;
-}
-
+    .tax-info {
+        display: none;
+    }
 </style>
-<% if (typeof showFilters !== 'undefined' && showFilters) { %>
-    <div id="filters" class="d-flex justify-content-center gap-4 py-2 mt-0">
-          <a href="/listings?category=Trending" class="filter text-center">
-    <i class="fa-solid fa-fire fa-icon"></i>
-    <p class="mb-2 fa-text">Trending</p>
-  </a>
-  <a href="/listings?category=Adventure" class="filter text-center">
-    <i class="fa-solid fa-mountain fa-icon"></i>
-    <p class="mb-2 fa-text">Adventure</p>
-  </a>
-  <a href="/listings?category=Beach" class="filter text-center">
-    <i class="fa-solid fa-water fa-icon"></i>
-    <p class="mb-2 fa-text">Beach</p>
-  </a>
-  <a href="/listings?category=Snow" class="filter text-center">
-    <i class="fa-solid fa-snowflake fa-icon"></i>
-    <p class="mb-2 fa-text">Snow</p>
-  </a>
-  <a href="/listings?category=Villa" class="filter text-center">
-    <i class="fa-solid fa-house fa-icon"></i>
-    <p class="mb-2 fa-text">Villa</p>
-  </a>
-  <a href="/listings?category=Farm" class="filter text-center">
-    <i class="fa-solid fa-tractor fa-icon"></i>
-    <p class="mb-2 fa-text">Farm</p>
-  </a>
-  <a href="/listings?category=Castle" class="filter text-center">
-    <i class="fa-solid fa-font-awesome fa-icon"></i>
-    <p class="mb-2 fa-text">Castle</p>
-  </a>
-  <a href="/listings" class="filter text-center">
-    <i class="fa-solid fa-globe fa-icon"></i>
-    <p class="mb-2 fa-text">All</p>
-  </a>
+
+<div class="container mt-4">
+  <% if (typeof showFilters !== 'undefined' && showFilters) { %>
+    <div id="filters" class="d-flex flex-wrap justify-content-center gap-4 py-2">
+      <a href="/listings?category=Trending" class="filter text-center">
+        <i class="fa-solid fa-fire fa-icon"></i>
+        <p class="mb-2 fa-text">Trending</p>
+      </a>
+      <a href="/listings?category=Adventure" class="filter text-center">
+        <i class="fa-solid fa-mountain fa-icon"></i>
+        <p class="mb-2 fa-text">Adventure</p>
+      </a>
+      <a href="/listings?category=Beach" class="filter text-center">
+        <i class="fa-solid fa-water fa-icon"></i>
+        <p class="mb-2 fa-text">Beach</p>
+      </a>
+      <a href="/listings?category=Snow" class="filter text-center">
+        <i class="fa-solid fa-snowflake fa-icon"></i>
+        <p class="mb-2 fa-text">Snow</p>
+      </a>
+      <a href="/listings?category=Villa" class="filter text-center">
+        <i class="fa-solid fa-house fa-icon"></i>
+        <p class="mb-2 fa-text">Villa</p>
+      </a>
+      <a href="/listings?category=Farm" class="filter text-center">
+        <i class="fa-solid fa-tractor fa-icon"></i>
+        <p class="mb-2 fa-text">Farm</p>
+      </a>
+      <a href="/listings?category=Castle" class="filter text-center">
+        <i class="fa-solid fa-font-awesome fa-icon"></i>
+        <p class="mb-2 fa-text">Castle</p>
+      </a>
+      <a href="/listings" class="filter text-center">
+        <i class="fa-solid fa-globe fa-icon"></i>
+        <p class="mb-2 fa-text">All</p>
+      </a>
     </div>
   <% } %>
-      
-  <h3 class="mt-0">
-  <% if (currentCategory && currentCategory !== "All") { %>
-    Showing <%= currentCategory %> Listings
-  <% } else { %>
-    All Listings
-  <% } %>
-</h3>
-    <div class="row row-cols-xxl-6 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-2">
-        <% for( let listing of allListings ) { %>
-            <a href="/listings/<%= listing._id %>" class="listing-links">
-                <div class="card col listing-card">
-                        <img src="<%= listing.image.url %>" 
-                        class="card-img-top" 
-                        alt="listing_img" 
-                        style="height: 15rem;">
 
-                         <div class="card-img-overlay"></div>
+  <h3 class="mt-3 mb-4">
+    <% if (currentCategory && currentCategory !== "All") { %>
+      Showing <%= currentCategory %> Listings
+    <% } else { %>
+      All Listings
+    <% } %>
+  </h3>
 
-                        <div class="card-body mt-2">
-                            <h5 class="card-title" style="font-size: 18px; font-weight: 700; margin-bottom: 1px;"><%= listing.shortDescription %></h5>
-                            <p class="card-desc"><%= listing.availability %></p>
-                            <p class="card-price">£ <%= listing.price %> for 2 nights</p>
-                        </div>
-                </div>
-            </a>
-            <% } %>
-    </div>
-</body>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
+    <% for (let listing of allListings) { %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="listing-links">
+          <div class="card listing-card h-100">
+            <img 
+              src="<%= listing.image.url %>" 
+              class="card-img-top" 
+              alt="listing_img" 
+              style="height: 200px; object-fit: cover;">
+
+            <div class="card-img-overlay"></div>
+
+            <div class="card-body mt-2">
+              <h5 class="card-title fw-bold mb-1" style="font-size: 18px;"><%= listing.shortDescription %></h5>
+              <p class="card-desc mb-1"><%= listing.availability %></p>
+              <p class="card-price">£ <%= listing.price %> for 2 nights</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
