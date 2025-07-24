@@ -183,10 +183,10 @@ Wanderlust was created to address the need for a simple yet powerful platform to
 ## 👤 Author
 
 **Vraj Patel**  
-Final Year BSc (Hons) Computer Science Student  
-🛠️ Full-Stack Web Developer | Exploring AI & Machine Learning | Building Projects in React, Node.js & Python
-📍 Based in UK | 💼 Aspiring Full Stack Web Developer   
-🔗 [LinkedIn](https://www.linkedin.com/in/vraj-patel-459033212/)
+Graduated BSc (Hons) Computer Science Student. 
+🛠️ Full-Stack Web Developer | Exploring AI & Machine Learning | Building Projects in React, Node.js & Python. 
+📍 Based in UK | 💼 Aspiring Full Stack Web Developer. 
+🔗 [LinkedIn](https://www.linkedin.com/in/vraj-patel-459033212/). 
 
 ---
 
