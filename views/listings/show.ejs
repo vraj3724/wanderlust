@@ -26,7 +26,7 @@
 
             <p class="card-para">
               <%= listing.detail %><br>
-              <b> Price: £<%= listing.price %> for 2 nights</b><br>
+              <b> Price: £<%= listing.price %> for 1 night</b><br>
               <%= listing.location %> <br>
               <%= listing.country %> <br>
               <b>Owner: </b><%= listing.host.username %>
@@ -86,26 +86,24 @@
 
         <div class="col-12 col-lg-4 mb-3">
             <div class="card p-4 ps-4 pe-4 shadow-lg booking-card">
-              <h5><b>Price..</b></h5>
+              <form action="/listings/<%= listing._id %>/book" method="get">
+              <h5><b>£<%= listing.price %></b></h5>
               <div class="row book-row g-2 my-2">
                 <div class="col-12 col-md-6 mt-0 ps-3 pt-2 pb-2" style="  border-right: 1px solid #6a6a6a; border-bottom: 1px solid #6a6a6a;">
                   <label for="Check-In" style="font-size: 16px;"><b>Check In</b></label>
-                  <input type="date" style="border: none; padding: 0%;" class="form-control ps-0">
+                  <input type="date" name="checkin" style="border: none; padding: 0%;" class="form-control ps-0" required>
+                  <div class="invalid-feedback">Please Enter Check-In Date</div>
                 </div>
                 <div class="col-12 col-md-6 mt-0 ps-3 pt-2 pb-2" style="border-bottom: 1px solid #6a6a6a;">
                   <label for="Check-Out" style="font-size: 16px;"><b>Check Out</b></label>
-                  <input type="date" style="border: none; padding: 0%;" class="form-control ps-0">
+                  <input type="date" name="checkout" style="border: none; padding: 0%;" class="form-control ps-0" required>
                 </div>
                 <div class="mb-2">
-                <input type="number" class="form-control custom-placeholder" placeholder="Guests" style="border: none;">
+                <input type="number" name="guest" class="form-control custom-placeholder" placeholder="Guests" style="border: none;" required>
               </div>
               </div>
-              <button class="btn btn-danger w-100 my-2">Book Now</button>
-              <hr>
-              <p>£... x 2 nights</p>
-              <p>Service Fee: £...</p>
-              <hr>
-              <p><strong>Total: £...</strong></p>
+                <button class="btn btn-danger w-100 my-2">Book Now</button>
+              </form>
             </div>
           </div>
       </div>

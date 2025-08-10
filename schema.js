@@ -22,9 +22,16 @@ const reviewSchema = Joi.object({
 });
 
 
+const bookingSchema = Joi.object({
+  checkin: Joi.date().required().messages({'date.base': 'Check-in date must be a valid date', 'any.required': 'Check-in date is required'}),
+  checkout: Joi.date().greater(Joi.ref('checkin')).required().messages({'date.greater': 'Check-out date must be after check-in date', 'any.required': 'Check-out date is required'}),
+  guest: Joi.number().integer().min(1).required().messages({'number.min': 'Guest count must be at least 1'})
+})
+
 
 module.exports = {
   listingSchema,
-  reviewSchema
+  reviewSchema,
+  bookingSchema,
 };
 
