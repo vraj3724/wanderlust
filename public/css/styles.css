@@ -294,3 +294,33 @@ body {
   }
 }
 
+.book-row {
+  border: 1px solid #6a6a6a;
+  border-radius: 1rem;
+}
+
+.custom-placeholder::placeholder {
+  font-weight: bold;
+  color: black;
+  opacity: 1; /* Ensure it's fully visible */
+}
+
+/* Add vendor prefixes for full browser support */
+.custom-placeholder::-webkit-input-placeholder {
+  font-weight: bold;
+  color: black;
+  opacity: 1;
+}
+
+.custom-placeholder:-ms-input-placeholder {
+  font-weight: bold;
+  color: black;
+  opacity: 1;
+}
+
+.booking-card {
+  position: sticky !important; 
+  top: 100px; 
+  max-width: 450px; 
+  border-radius: 1rem;
+}

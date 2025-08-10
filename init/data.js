@@ -12,7 +12,6 @@ const sampleListings = [
     about: "Welcome to our cozy beachfront cottage, ideally located in Malibu. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "10 - 12 September",
     geometry: {
       type: "Point",
@@ -34,7 +33,6 @@ const sampleListings = [
     about: "Welcome to our modern loft in downtown, ideally located in New York City. Perfect for urban explorers who want to stay in the heart of the city.",
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
-    host: "6866f0f5ecc70b0ebf47c9a0",
     availability: "25 - 26 August",
     geometry: {
       type: "Point",
@@ -55,7 +53,6 @@ const sampleListings = [
     about: "Welcome to our mountain retreat, ideally located in Aspen. Unplug and unwind in the peaceful surroundings of nature, great for a digital detox.",
     detail: "Loft bed , Shared bath access",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
-    host: "6866f0d6ecc70b0ebf47c999",
     availability: "10 - 13 August",
     geometry: {
       type: "Point",
@@ -76,7 +73,6 @@ const sampleListings = [
     about: "Welcome to our historic villa in tuscany, ideally located in Florence. Explore the rolling hills and vineyards of Tuscany while staying in a beautifully restored villa.",
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
-    host: "6866f039ecc70b0ebf47c984",
     availability: "18 - 21 July",
     geometry: {
       type: "Point",
@@ -97,7 +93,6 @@ const sampleListings = [
     about: "Welcome to our secluded treehouse getaway, ideally located in Portland. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "Loft bed , Shared bath access",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
-    host: "6866ec391c43245c7b6080ad",
     availability: "24 - 27 October",
     geometry: {
       type: "Point",
@@ -119,7 +114,6 @@ const sampleListings = [
     about: "Welcome to our beachfront paradise, ideally located in Cancun. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 queen bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "15 - 17 October",
     geometry: {
       type: "Point",
@@ -140,7 +134,6 @@ const sampleListings = [
     about: "Welcome to our rustic cabin by the lake, ideally located in Lake Tahoe. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
-    host: "6866f0f5ecc70b0ebf47c9a0",
     availability: "24 - 27 July",
     geometry: {
       type: "Point",
@@ -162,7 +155,6 @@ const sampleListings = [
     about: "Welcome to our luxury penthouse with city views, ideally located in Los Angeles. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 queen beds -  Ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
-    host: "6866f0d6ecc70b0ebf47c999",
     availability: "18 - 21 August",
     geometry: {
       type: "Point",
@@ -183,7 +175,6 @@ const sampleListings = [
     about: "Welcome to our ski-in/ski-out chalet, ideally located in Verbier. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 king bed , Private bathroom",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "20 - 23 September",
     geometry: {
       type: "Point",
@@ -204,7 +195,6 @@ const sampleListings = [
     about: "Welcome to our safari lodge in the serengeti, ideally located in Serengeti National Park. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Mini fridge", "Microwave", "Toiletries" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "11 - 14 October",
     geometry: {
       type: "Point",
@@ -225,7 +215,6 @@ const sampleListings = [
     about: "Welcome to our historic canal house, ideally located in Amsterdam. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 double bed -  Shared bathroom",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "12 - 14 September",
     geometry: {
       type: "Point",
@@ -246,7 +235,6 @@ const sampleListings = [
     about: "Welcome to our private island retreat, ideally located in Fiji. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 king bed ,  Private bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
-    host: "6866ec391c43245c7b6080ad",
     availability: "23 - 26 October",
     geometry: {
       type: "Point",
@@ -267,7 +255,6 @@ const sampleListings = [
     about: "Welcome to our charming cottage in the cotswolds, ideally located in Cotswolds. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "Loft bed ,  Shared bath access",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
-    host: "6866f0d6ecc70b0ebf47c999",
     availability: "15 - 16 September",
     geometry: {
       type: "Point",
@@ -288,7 +275,6 @@ const sampleListings = [
     about: "Welcome to our historic brownstone in boston, ideally located in Boston. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 king bed , Private bathroom",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
-    host: "6866f0f5ecc70b0ebf47c9a0",
     availability: "24 - 25 October",
     geometry: {
       type: "Point",
@@ -309,7 +295,6 @@ const sampleListings = [
     about: "Welcome to our beachfront bungalow in bali, ideally located in Bali. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "13 - 15 October",
     geometry: {
       type: "Point",
@@ -330,7 +315,6 @@ const sampleListings = [
     about: "Welcome to our mountain view cabin in banff, ideally located in Banff. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "13 - 16 July",
     geometry: {
       type: "Point",
@@ -351,7 +335,6 @@ const sampleListings = [
     about: "Welcome to our art deco apartment in miami, ideally located in Miami. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 single beds , Private ensuite",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
-    host: "6866ec391c43245c7b6080ad",
     availability: "17 - 19 September",
     geometry: {
       type: "Point",
@@ -372,7 +355,6 @@ const sampleListings = [
     about: "Welcome to our tropical villa in phuket, ideally located in Phuket. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "20 - 23 July",
     geometry: {
       type: "Point",
@@ -393,7 +375,6 @@ const sampleListings = [
     about: "Welcome to our historic castle in scotland, ideally located in Scottish Highlands. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 queen bed + workspace , Private bath",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
-    host: "6866f039ecc70b0ebf47c984",
     availability: "22 - 23 September",
     geometry: {
       type: "Point",
@@ -414,7 +395,6 @@ const sampleListings = [
     about: "Welcome to our desert oasis in dubai, ideally located in Dubai. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Mini fridge", "Microwave", "Toiletries" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "14 - 17 October",
     geometry: {
       type: "Point",
@@ -435,7 +415,6 @@ const sampleListings = [
     about: "Welcome to our rustic log cabin in montana, ideally located in Montana. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Air conditioning", "Private pool", "Kitchen" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "22 - 25 September",
     geometry: {
       type: "Point",
@@ -457,7 +436,6 @@ const sampleListings = [
     about: "Welcome to our beachfront villa in greece, ideally located in Mykonos. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 bunk bed , Shared bathroom",
     amenities: [ "Wi-Fi", "Free parking", "Heating", "Washer" ],
-    host: "6866f0f5ecc70b0ebf47c9a0",
     availability: "13 - 16 September",
     geometry: {
       type: "Point",
@@ -478,7 +456,6 @@ const sampleListings = [
     about: "Welcome to our eco-friendly treehouse retreat, ideally located in Costa Rica. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "Double bed , Attached bathroom",
     amenities: [ "Air conditioning", "Kitchen", "Dryer", "TV" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "21 - 23 September",
     geometry: {
       type: "Point",
@@ -499,7 +476,6 @@ const sampleListings = [
     about: "Welcome to our historic cottage in charleston, ideally located in Charleston. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Workspace", "Coffee maker", "Private entrance" ],
-    host: "6866f0d6ecc70b0ebf47c999",
     availability: "20 - 23 August",
     geometry: {
       type: "Point",
@@ -520,7 +496,6 @@ const sampleListings = [
     about: "Welcome to our modern apartment in tokyo, ideally located in Tokyo. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "Studio with sofa bed , Shared bath",
     amenities: [ "Free parking", "BBQ grill", "Balcony", "Outdoor dining" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "14 - 15 September",
     geometry: {
       type: "Point",
@@ -541,7 +516,6 @@ const sampleListings = [
     about: "Welcome to our lakefront cabin in new hampshire, ideally located in New Hampshire. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 queen beds , Ensuite",
     amenities: [ "Wi-Fi", "Hot tub", "Fireplace", "Essentials" ],
-    host: "6866f0bfecc70b0ebf47c992",
     availability: "11 - 13 August",
     geometry: {
       type: "Point",
@@ -562,7 +536,6 @@ const sampleListings = [
     about: "Welcome to our luxury villa in the maldives, ideally located in Maldives. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 double bed , Shared bathroom",
     amenities: [ "Pet-friendly", "Heating", "Hair dryer", "First aid kit" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "15 - 18 August",
     geometry: {
       type: "Point",
@@ -583,7 +556,6 @@ const sampleListings = [
     about: "Welcome to our ski chalet in aspen, ideally located in Aspen. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "2 single beds , Private ensuite",
     amenities: [ "Wi-Fi", "Gym access", "Elevator", "Smoke alarm" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "19 - 22 September",
     geometry: {
       type: "Point",
@@ -604,7 +576,6 @@ const sampleListings = [
     about: "Welcome to our secluded beach house in costa rica, ideally located in Costa Rica. Whether you're here for business or leisure, this is the perfect base for your stay!",
     detail: "1 double bed , Shared bathroom",
     amenities: [ "Air conditioning", "Iron", "Dishwasher", "Carbon monoxide alarm" ],
-    host: "6866f0a2ecc70b0ebf47c98b",
     availability: "11 - 14 August",
     geometry: {
       type: "Point",

@@ -1,7 +1,7 @@
 const Listing = require('./models/listings.js');
 const Review = require("./models/reviews.js");
 const ExpressError = require('./utils/ExpressError.js');
-const { listingSchema, reviewSchema } = require('./schema.js');
+const { listingSchema, reviewSchema, bookingSchema } = require('./schema.js');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if(!req.isAuthenticated()) {
@@ -63,3 +63,22 @@ module.exports.validateReview = (req, res, next) => {
         next();
     }
 };
+
+module.exports.validateBooking = async (req, res, next) => {
+    let {id} = req.params;
+    let listing = await Listing.findById(id);
+    const bodyData = req.body || {};
+    const queryData = req.query || {};
+
+    const data = Object.keys(bodyData).length ? bodyData : queryData;
+
+    const { error } = bookingSchema.validate(data, { abortEarly: false });
+
+    if (error) {
+        const msg = error.details.map(el => el.message).join(', ');
+        req.flash("error", msg);
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
+};
+
