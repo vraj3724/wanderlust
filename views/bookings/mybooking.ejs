@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerplate") %>
+
+<h3 class="mb-4">Below are all the bookings</h3>
+
+<% for (let bookings of booking) { %>
+  <div class="card mb-4 shadow-sm">
+    <!-- HEADER -->
+    <div class="card-header d-flex flex-wrap justify-content-between align-items-center py-2 px-3">
+      <b style="font-size: 16px;">Booking Id : #<%= bookings._id %></b>
+      <form action="/bookings/<%= bookings._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-outline-danger btn-sm">
+            Cancel Booking
+      </button>
+      </form>
+    </div>
+
+    <!-- BODY -->
+    <div class="card-body py-3 px-3">
+      <div class="row g-3">
+        
+        <!-- LEFT SIDE -->
+        <div class="col-12 col-md-6">
+          <div class="d-flex flex-column flex-md-row align-items-start gap-3">
+            <img src="<%= bookings.listing.image.url %>" 
+                 alt="listing_img" 
+                 class="rounded"
+                 style="object-fit: cover; height: 160px; width: 160px; flex-shrink: 0;">
+            
+            <div>
+              <h5 class="fw-bold mb-2" style="font-size: 18px;"><%= bookings.listing.title %></h5>
+              <p class="mb-1" style="font-size: 15px; line-height: 1.5;">
+                <b>Detail:</b> <%= bookings.listing.detail %>
+              </p>
+              <p class="mb-1" style="font-size: 15px; line-height: 1.5;">
+                <b>About:</b> <%= bookings.listing.about %>
+              </p>
+              <p class="mb-1" style="font-size: 15px; line-height: 1.5;">
+                <b>Location:</b> <%= bookings.listing.location %>, <%= bookings.listing.country %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-12 col-md-6">
+          <div style="font-size: 15px; line-height: 1.6;">
+            <div><b>Amount Paid:</b> £<%= bookings.price %></div>
+            <div><b>Check-In:</b> <%= bookings.checkInDate.toDateString() %></div>
+            <div><b>Check-Out:</b> <%= bookings.checkOutDate.toDateString() %></div>
+            <div><b>Guests:</b> <%= bookings.Guest %></div>
+            <div>
+              <b>Status:</b> 
+              <span class="badge bg-success"><%= bookings.status %></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% } %>

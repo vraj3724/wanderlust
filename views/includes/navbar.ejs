@@ -75,10 +75,15 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <a class="nav-item nav-link" href="/listings/new">Airbnb your home</a>
-        <% if (currUser) { %>
-        <a class="nav-item nav-link me-3" href="/mylistings">My Listings</a>
+        <% if (currUser && (currUser.role === "host" || currUser.role === "Host")) { %>
+          <a class="nav-item nav-link" href="/listings/new">Airbnb your home</a>
+          <a class="nav-item nav-link me-3" href="/mylistings">My Listings</a>
         <% } %>
+
+        <% if (currUser && (currUser.role === "user" || currUser.role === "User")) { %>
+          <a class="nav-item nav-link" href="/mybookings">My Bookings</a>
+        <% } %>
+
         <% if (!currUser) { %>
             <form class="d-inline" action="/signup" method="get">
               <button class="btn me-3" style="background-color: #fe424d; color: #fff;">SignUp</button>

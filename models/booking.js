@@ -6,12 +6,13 @@ const { required, number } = require("joi");
 const BookingSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
-        ref: "user",
+        ref: "User",
+        required: true,
     },
 
     listing: {
         type: mongoose.Schema.ObjectId,
-        ref: "listing",
+        ref: "Listing",
         required: true,
     },
 
@@ -28,8 +29,19 @@ const BookingSchema = new mongoose.Schema({
     Guest: {
         type: Number,
         required: true,
+    },
 
-    }
+    price: { 
+        type: Number, 
+        required: true, 
+    },
+
+    status: {
+      type: String,
+      enum: ['pending', 'confirmed', 'cancelled'],
+      default: 'confirmed',
+      index: true,
+    },
 });
 
 const Booking = new mongoose.model("Booking", BookingSchema);

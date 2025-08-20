@@ -22,9 +22,8 @@ const listingRouter = require('./routes/listing.js');
 const mylistingRouter = require('./routes/mylisting.js');
 const reviewRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
-const Booking = require('./models/booking.js');
-const Listing = require('./models/listings.js');
-const { validateBooking } = require('./middleware.js');
+const bookingRouter = require('./routes/booking.js');
+const mybookingRouter = require('./routes/mybooking.js');
 
 main()
 .then(() => {
@@ -92,62 +91,11 @@ app.get("/", (req, res) => {
     res.redirect("/listings");
 });
 
-app.get("/listings/:id/book", validateBooking, async (req, res, next) => {
-  try {
-    const listing = await Listing.findById(req.params.id);
-    const { checkin, checkout, guest } = req.query;
-
-    const checkInDate = new Date(checkin);
-    const checkOutDate = new Date(checkout);
-    const nights = (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
-
-    const pricePerNight = listing.price;
-    const subtotal = nights * pricePerNight;
-    const serviceFee = subtotal * 0.15;
-    const total = subtotal + serviceFee;
-
-    res.render("bookings/review", {
-      listing,
-      checkin,
-      checkout,
-      guest,
-      nights,
-      subtotal,
-      serviceFee,
-      total
-    });
-  } catch (err) {
-    next(err);
-  }
-});
-
-
-app.post("/listings/:id/book", validateBooking, async (req, res, next) => {
-  try {
-    const { checkin, checkout, guest } = req.body;
-    const listingId = req.params.id; 
-
-    const newBooking = new Booking({
-      checkInDate: checkin,
-      checkOutDate: checkout,
-      Guest: guest,
-      listing: listingId,
-    });
-
-    const savedBooking = await newBooking.save();
-    console.log(savedBooking);
-    req.flash("success", "Booking successful!");
-    res.redirect(`/listings/${listingId}`);
-  } catch (err) {
-    next(err);
-  }
-});
-
-
-
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/mylistings", mylistingRouter);
+app.use("/bookings", bookingRouter);
+app.use("/mybookings", mybookingRouter);
 app.use("/", userRouter);
 
 

@@ -6,6 +6,7 @@
     const coords = coordinates.map(Number);
 </script>
 
+
 <!-- Wrapper for clean, consistent padding -->
 <div class="px-3 px-md-5 py-2">
 
@@ -84,6 +85,7 @@
           </div>
         </div>
 
+        <% if (currUser && currUser.role === "user") { %>
         <div class="col-12 col-lg-4 mb-3">
             <div class="card p-4 ps-4 pe-4 shadow-lg booking-card">
               <form action="/listings/<%= listing._id %>/book" method="get">
@@ -107,11 +109,12 @@
             </div>
           </div>
       </div>
+      <% } %>
     </div>
   </div>
 
   <!-- Edit/Delete Buttons -->
-  <% if (currUser && currUser._id.equals(listing.host._id)) { %>
+  <% if (currUser && listing.host && String(listing.host._id) === String(currUser._id)) { %>
   <div class="col-12 col-lg-10 mx-auto mb-4 d-flex flex-wrap gap-3">
     <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger">
       Edit the Listing
