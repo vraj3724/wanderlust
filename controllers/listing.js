@@ -45,22 +45,39 @@ module.exports.editList = async(req, res) => {
     res.render("listings/edit", {listing, originalImageUrl});
 };
 
-module.exports.updateList = async(req,res) => {
-    let {id} = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
+module.exports.updateList = async (req, res) => {
+  let { id } = req.params;
 
-    if(typeof req.file !== "undefined") {
-        let url = req.file.path;
-        let filename = req.file.filename;
-        listing.image = {url, filename};
-        await listing.save();
-    }
-    req.flash("success", "Listing Updated");
-    res.redirect(`/listings/${id}`);
+  const { availabilityStart, availabilityEnd, ...rest } = req.body;
+
+  const updateData = { ...rest };
+
+  if (availabilityStart && availabilityEnd) {
+    updateData.availability = {
+      start: new Date(availabilityStart),
+      end:   new Date(availabilityEnd),
+    };
+  }
+
+  let listing = await Listing.findByIdAndUpdate(id, updateData, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
+
+  req.flash("success", "Listing Updated");
+  res.redirect(`/listings/${id}`);
 };
 
+
 module.exports.createList = async (req,res) => {
-    let { title, shortDescription, image, price, location, country, availability, about, amenities, detail, category} = req.body;
+    let { title, shortDescription, image, price, location, country, availabilityStart, availabilityEnd, about, amenities, detail, category} = req.body;
     let host = req.user._id;
     let newUrl = req.file.path;
     let newFilename = req.file.filename;
@@ -77,6 +94,11 @@ let response = await geocodingClient.forwardGeocode({
 
 
 const geometry = response.body.features[0].geometry;
+
+const availability = {
+      start: new Date(availabilityStart),
+      end:   new Date(availabilityEnd)
+    };
 
 const newListing = new Listing({
     title,

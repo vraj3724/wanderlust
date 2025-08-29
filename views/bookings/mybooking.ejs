@@ -7,7 +7,7 @@
     <!-- HEADER -->
     <div class="card-header d-flex flex-wrap justify-content-between align-items-center py-2 px-3">
       <b style="font-size: 16px;">Booking Id : #<%= bookings._id %></b>
-      <form action="/bookings/<%= bookings._id %>?_method=DELETE" method="POST" style="display:inline;">
+      <form action="/mybookings/<%= bookings._id %>?_method=DELETE" method="POST" style="display:inline;">
         <button type="submit" class="btn btn-outline-danger btn-sm">
             Cancel Booking
       </button>
@@ -21,11 +21,17 @@
         <!-- LEFT SIDE -->
         <div class="col-12 col-md-6">
           <div class="d-flex flex-column flex-md-row align-items-start gap-3">
-            <img src="<%= bookings.listing.image.url %>" 
-                 alt="listing_img" 
-                 class="rounded"
-                 style="object-fit: cover; height: 160px; width: 160px; flex-shrink: 0;">
-            
+            <% if (bookings.listing && bookings.listing.image) { %>
+              <img src="<%= bookings.listing.image.url %>"
+                   alt="listing_img"
+                   class="rounded"
+                   style="object-fit: cover; height: 160px; width: 160px; flex-shrink: 0;">
+            <% } else { %>
+              <img src="/images/placeholder.png"
+                   alt="placeholder"
+                   class="rounded"
+                   style="object-fit: cover; height: 160px; width: 160px; flex-shrink: 0;">
+            <% } %>
             <div>
               <h5 class="fw-bold mb-2" style="font-size: 18px;"><%= bookings.listing.title %></h5>
               <p class="mb-1" style="font-size: 15px; line-height: 1.5;">
@@ -45,8 +51,8 @@
         <div class="col-12 col-md-6">
           <div style="font-size: 15px; line-height: 1.6;">
             <div><b>Amount Paid:</b> £<%= bookings.price %></div>
-            <div><b>Check-In:</b> <%= bookings.checkInDate.toDateString() %></div>
-            <div><b>Check-Out:</b> <%= bookings.checkOutDate.toDateString() %></div>
+            <div><b>Check-In:</b> <%= bookings.checkInDate.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) %></div>
+            <div><b>Check-Out:</b> <%= bookings.checkOutDate.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) %></div>
             <div><b>Guests:</b> <%= bookings.Guest %></div>
             <div>
               <b>Status:</b> 

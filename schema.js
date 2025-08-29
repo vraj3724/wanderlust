@@ -8,7 +8,8 @@ const listingSchema = Joi.object({
   location: Joi.string().required(),
   country: Joi.string().required(),
   price: Joi.number().required().min(0),
-  availability: Joi.string().required(),
+  availabilityStart: Joi.date().iso().required(),
+  availabilityEnd: Joi.date().iso().greater(Joi.ref('availabilityStart')).required(),
   amenities: Joi.array().items(Joi.string()).required(),
   category: Joi.string().valid("Adventure", "Beach", "Snow", "Villa", "Farm", "Castle").required()
    

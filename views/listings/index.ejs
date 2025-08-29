@@ -104,7 +104,16 @@
 
             <div class="card-body mt-2">
               <h5 class="card-title fw-bold mb-1" style="font-size: 18px;"><%= listing.shortDescription %></h5>
-              <p class="card-desc mb-1"><%= listing.availability %></p>
+              <p class="card-desc mb-1">
+                <%= listing.availability?.start 
+                      ? listing.availability.start.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) 
+                      : "N/A" %> 
+                - 
+                <%= listing.availability?.end 
+                      ? listing.availability.end.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) 
+                      : "N/A" %>
+              </p>
+
               <p class="card-price">£ <%= listing.price %> per night</p>
             </div>
           </div>

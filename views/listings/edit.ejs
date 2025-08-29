@@ -65,24 +65,32 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-5 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label for="location" class="form-label">Location</label>
                         <input type="text" name="location" value="<%= listing.location %>" class="form-control" required>
                         <div class="invalid-feedback">Please Enter a Location</div>
                     </div>
 
-                    <div class="col-7 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label for="country" class="form-label">Country</label>
                         <input type="text" name="country" value="<%= listing.country %>" class="form-control" required>
                         <div class="invalid-feedback">Please Enter a Country</div>
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="availability" class="form-label">Availability</label>
-                    <input type="text" name="availability" value="<%= listing.availability %>" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Date</div>
-                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="availabilityStart" class="form-label">Availability Start</label>
+                        <input type="date" name="availabilityEnd" value="<%= listing && listing.availability ? listing.availability.start.toISOString().split('T')[0] : '' %>" class="form-control" required>
+
+                        <div class="invalid-feedback">Please select availability start.</div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="availabilityEnd" class="form-label">Availability End</label>
+                        <input type="date" name="availabilityEnd" value="<%= listing && listing.availability ? listing.availability.end.toISOString().split('T')[0] : '' %>" class="form-control" required>
+                        <div class="invalid-feedback">Please select availability end.</div>
+                    </div>
+                    </div>
 
                 <div class="mb-3">
                     <button class="btn btn-dark add-btn">Edit</button>

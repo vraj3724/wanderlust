@@ -94,7 +94,7 @@ app.get("/", (req, res) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/mylistings", mylistingRouter);
-app.use("/bookings", bookingRouter);
+app.use("/listings/:id/book", bookingRouter);
 app.use("/mybookings", mybookingRouter);
 app.use("/", userRouter);
 
