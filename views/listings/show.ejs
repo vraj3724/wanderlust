@@ -93,12 +93,28 @@
               <div class="row book-row g-2 my-2">
                 <div class="col-12 col-md-6 mt-0 ps-3 pt-2 pb-2" style="border-bottom: 1px solid #6a6a6a;">
                   <label for="Check-In" style="font-size: 16px;"><b>Check In</b></label>
-                  <input type="date" name="checkin" style="border:none; padding: 0%;" class="form-control ps-0" required>
+                  <input id="checkin"
+                    type="date"
+                    name="checkin"
+                    class="form-control ps-0"
+                    style="border:none; padding:0%;"
+                    min="<%= avail?.start %>"
+                    max="<%= avail?.end %>"
+                    value="<%= typeof checkin !== 'undefined' ? checkin : '' %>"
+                    required>
                   <div class="invalid-feedback">Please Enter Check-In Date</div>
                 </div>
                 <div class="col-12 col-md-6 mt-0 ps-3 pt-2 pb-2" style="border-bottom: 1px solid #6a6a6a;">
                   <label for="Check-Out" style="font-size: 16px;"><b>Check Out</b></label>
-                  <input type="date" name="checkout" style="border: none; padding: 0%;" class="form-control ps-0" required>
+                  <input id="checkout"
+                    type="date"
+                    name="checkout"
+                    class="form-control ps-0"
+                    style="border:none; padding:0%;"
+                    min="<%= avail?.start %>"
+                    max="<%= avail?.end %>"
+                    value="<%= typeof checkout !== 'undefined' ? checkout : '' %>"
+                    required>
                 </div>
                 <div class="mb-2">
                 <input type="number" name="guest" class="form-control custom-placeholder" placeholder="Guests" style="border: none;" required>
@@ -192,5 +208,10 @@
   </div>
 
   <script src="/js/map.js"></script>
+  <script>
+    const ci = document.getElementById('checkin');
+    const co = document.getElementById('checkout');
+    ci.addEventListener('change', () => { if (ci.value) co.min = ci.value; });
+</script>
 
 </div>

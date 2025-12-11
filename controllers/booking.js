@@ -54,6 +54,22 @@ module.exports.createBooking = async (req, res) => {
       listing: listingId,
     });
 
+    const ci = new Date(checkin);
+    const co = new Date(checkout);
+    const s  = new Date(listing.availability.start);
+    const e  = new Date(listing.availability.end);
+
+    if (isNaN(ci) || isNaN(co) || co <= ci) {
+      req.flash("error", "Invalid dates");
+      return res.redirect(`/listings/${listingId}`);
+    }
+
+    if (ci < s || co > e) {
+      req.flash("error", "Selected dates are outside availability");
+      return res.redirect(`/listings/${listingId}`);
+    }
+
+
     const savedBooking = await newBooking.save();
     console.log(savedBooking);
     req.flash("success", "Booking successful!");

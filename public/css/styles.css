@@ -46,6 +46,36 @@ body {
   width: 100%;
 }
 
+.nav-button {
+  background-color: #fe424d; 
+  color: #fff;
+}
+
+@media (max-width: 991.98px) {
+  .nav-button{
+    padding: 0%;
+    background: none;
+    border: none;
+    color: #222222;
+    font-weight: 500 !important;
+  }
+
+  .nav-button::after {
+  content: '';
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0%;
+  background: #ff5e5e;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.nav-button:hover::after {
+  width: 50%;
+}
+}
+
 /* Footer */
 .f-info {
   background-color: #fafafa;

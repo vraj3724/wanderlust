@@ -25,11 +25,23 @@ module.exports.newForm = (req, res) => {
 module.exports.showList = async (req, res) => {
     let {id} = req.params;
     const listing = await Listing.findById(id).populate({path: "reviews", populate: { path: "author" }}).populate("host");
+
     if(!listing) {
         req.flash("error", "Listing Doesn't exist");
         return res.redirect("/listings");
     };
-    res.render("listings/show", {listing});
+
+    const fmt = (d) => new Date(d).toISOString().slice(0, 10); // YYYY-MM-DD
+
+    const avail = listing.availability
+      ? {
+          start: fmt(listing.availability.start),
+          end:   fmt(listing.availability.end),
+        }
+      : null;
+
+      const { checkin, checkout } = req.query;
+    res.render("listings/show", {listing, avail, checkin: avail?.start, checkout: avail?.end,});
 };
 
 module.exports.editList = async(req, res) => {

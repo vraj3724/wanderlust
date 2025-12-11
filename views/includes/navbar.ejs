@@ -86,16 +86,16 @@
 
         <% if (!currUser) { %>
             <form class="d-inline" action="/signup" method="get">
-              <button class="btn me-3" style="background-color: #fe424d; color: #fff;">SignUp</button>
+              <button class="nav-button btn me-3">Signup</button>
             </form>
 
             <form class="d-inline" action="/login" method="get">
-              <button class="btn me-3" style="background-color: #fe424d; color: #fff;">Login</button>
+              <button class="nav-button btn me-3">Login</button>
             </form>
         <% } %>
         <% if (currUser) { %>
           <form class="d-inline" action="/logout" method="get">
-              <button class="btn me-3" style="background-color: #fe424d; color: #fff;">Logout</button>
+              <button class="nav-button btn me-3">Logout</button>
             </form>
         <% } %>
       </div>
